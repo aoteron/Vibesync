@@ -23,10 +23,14 @@ import { AlbumService } from '../services/AlbumService'
 import { ArtistService } from '../services/ArtistService'
 import { useEffect, useState } from 'react'
 
-const localToken = await window.localStorage.getItem('token')
-if (localToken) {
-  await TokenService.setToken(localToken)
+async function getToken() {
+  const localToken = await window.localStorage.getItem('token')
+  if (localToken) {
+    await TokenService.setToken(localToken)
+  }
 }
+getToken();
+
 const getUsers = () => {
   const loggedUserJSON = window.localStorage.getItem('userLogged')
   if (loggedUserJSON) {
