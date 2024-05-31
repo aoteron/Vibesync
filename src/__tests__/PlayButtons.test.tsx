@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import { PlayButtons } from "../pages/SongPage/components/playButtons";
 import { fireEvent, render, screen } from "@testing-library/react";
-
+import { vi } from 'vitest'
 
 describe("testing PlayButtons component", () => {
 
