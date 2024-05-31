@@ -25,13 +25,13 @@ export const PlayButtons = ({ togglePlay, isPlaying, toggleMute, isMuted, track,
     trackId
   } = useAudioContext()
   const checkTracksinLikedTracks = (track: Track) => {
-    if (likedTracks[0] === null) {
-      return false
+    if (!likedTracks || likedTracks.length === 0) {
+      return false;
     }
     if (likedTracks.find((item: Track) => item.id === track.id)) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   const handleHeartClick = () => {
@@ -60,11 +60,11 @@ export const PlayButtons = ({ togglePlay, isPlaying, toggleMute, isMuted, track,
       </div>
       <div className='button-container'>
         <div className='button-container__handle-player'>
-          <FontAwesomeIcon icon={isMuted ? faVolumeMute : faVolumeUp} onClick={toggleMute} />
-          <FontAwesomeIcon icon={faBackwardStep} onClick={handlePreviousTrack} />
-          <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} onClick={togglePlay} />
-          <FontAwesomeIcon icon={faForwardStep} onClick={handleNextTrack} />
-          <FontAwesomeIcon icon={checkTracksinLikedTracks(track) ? faHeart : faHeartRegular} onClick={handleHeartClick} />
+          <FontAwesomeIcon data-testid="volume-mute-icon" icon={isMuted ? faVolumeMute : faVolumeUp} onClick={toggleMute} />
+          <FontAwesomeIcon data-testid="previous-track-icon" icon={faBackwardStep} onClick={handlePreviousTrack} />
+          <FontAwesomeIcon data-testid="play-track-icon" icon={isPlaying ? faPause : faPlay} onClick={togglePlay} />
+          <FontAwesomeIcon data-testid="next-track-icon" icon={faForwardStep} onClick={handleNextTrack} />
+          <FontAwesomeIcon data-testid="fav-track-icon" icon={checkTracksinLikedTracks(track) ? faHeart : faHeartRegular} onClick={handleHeartClick} />
         </div>
       </div>
     </>

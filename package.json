@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "data": "json-server --watch ./src/db/data.json",
-    "test": "jest"
+    "test": "vitest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
@@ -21,8 +21,11 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
+    "enzyme": "^3.11.0",
     "framer-motion": "^11.0.8",
+    "jest-environment-jsdom": "^29.7.0",
     "js-server": "^1.0.1",
+    "jsdom": "^24.1.0",
     "json-server": "1.0.0-alpha.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -31,7 +34,8 @@
     "react-loading-skeleton": "^3.4.0",
     "react-router-dom": "^6.22.2",
     "sonner": "^1.4.41",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "vitest-dom": "^0.1.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.5",
@@ -56,6 +60,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "ts-jest": "^29.1.4",
     "typescript": "^5.3.3",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vitest": "^1.6.0"
   }
 }
