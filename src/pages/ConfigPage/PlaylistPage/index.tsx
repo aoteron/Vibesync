@@ -10,7 +10,7 @@ import { PlaylistService } from '@services/PlaylistService'
 
 export const PlaylistPage = () => {
   const queryPlaylist = useQuery({
-    queryKey: ['playlis'],
+    queryKey: ['playlist'],
     queryFn: async () => await PlaylistService.getPlaylists(),
   });
 
