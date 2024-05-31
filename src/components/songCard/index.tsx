@@ -10,7 +10,7 @@ interface Props {
   isActive?: boolean
 }
 
-const SongCard = ({ track, isActive }: Props) => {
+const SongCard = ({ track }: Props) => {
   const { setAudioUrl, setAudioImg, trackId, setTrackId, setIsPlaying, getSongDuration, audioRef, setSongDuration } = useAudioContext()
 
   const getTrack = async (trackId: string | undefined) => {

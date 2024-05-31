@@ -14,7 +14,7 @@ import { Signup } from '../pages/SignUp/Signup'
 import { TracksPage } from '../pages/TracksPage'
 import { SkeletonTheme } from 'react-loading-skeleton'
 import { TracksService } from '../services/TracksService'
-import { PlaylistPage } from '../pages/PlaylistPage'
+import { PlaylistPage } from '../pages/ConfigPage/PlaylistPage'
 import { Toaster } from 'sonner'
 import { TokenService } from '../services/TokenService'
 import { token } from '../services/TokenService'
@@ -23,10 +23,14 @@ import { AlbumService } from '../services/AlbumService'
 import { ArtistService } from '../services/ArtistService'
 import { useEffect, useState } from 'react'
 
-const localToken = await window.localStorage.getItem('token')
-if (localToken) {
-  await TokenService.setToken(localToken)
+async function getToken() {
+  const localToken = await window.localStorage.getItem('token')
+  if (localToken) {
+    await TokenService.setToken(localToken)
+  }
 }
+getToken();
+
 const getUsers = () => {
   const loggedUserJSON = window.localStorage.getItem('userLogged')
   if (loggedUserJSON) {
