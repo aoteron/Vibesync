@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Playlist } from 'src/types/data'
 import { PlaylistCard } from '@components/playlistCard/PlaylistCard'
-import '../SearchPage/components/CardSkeleton.css'
+import '@pages/SearchPage/components/CardSkeleton.css';
 import './playlistPage.css'
 import { Link } from 'react-router-dom'
 import { PlaylistService } from '@services/PlaylistService'
