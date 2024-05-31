@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import './modal.css'
 import { ModalSetting } from '../../styledComponents/modalSetting'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,13 +13,22 @@ type Props = {
 export const Modal = ({children, onOpen}: Props) => {
   return (
     <ModalSetting onClick={(event)=> {closeModalWhenClickOutside(event, onOpen)}}>
-      <div className="modal-container" >
-        <FontAwesomeIcon className='closeBtn' icon={faXmark} onClick={() => {closeModal(onOpen)}} />
+      <div className="modal-container">
+        <button
+          aria-label="close"
+          onClick={() => {closeModal(onOpen)}}
+          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+        >
+          <FontAwesomeIcon 
+            className='closeBtn' 
+            icon={faXmark} 
+          />
+        </button>
         <img className="modal-img" src="/src/assets/logo.webp" alt="" />
-          <div>
-            {children}
-          </div>
+        <div>
+          {children}
+        </div>
       </div>
     </ModalSetting>
-  )
+  );
 }
