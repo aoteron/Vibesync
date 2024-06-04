@@ -10,7 +10,8 @@ export class ArtistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(baseUrl, config)
             return response.data
@@ -23,7 +24,8 @@ export class ArtistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(baseUrl + id, config)
             return response.data
@@ -36,7 +38,8 @@ export class ArtistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.post(baseUrl, artist, config)
             return response.data
@@ -49,7 +52,8 @@ export class ArtistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.delete(baseUrl + id, config)
             return response.

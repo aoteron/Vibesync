@@ -9,7 +9,8 @@ export class SearchService {
             const config = {
                 headers: {
                     Authorization: `${token}`
-                }
+                },
+                WithCredentials: true
             }
             const URL = `${VITE_BASE_URL}search/${searchTerm}`
             const response = await axios.get(URL, config)

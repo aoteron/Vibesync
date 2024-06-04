@@ -10,7 +10,8 @@ export class AlbumService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + 'albums/' + id, config)
             return response.data
@@ -23,7 +24,8 @@ export class AlbumService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + 'albums', config)
             return response.data
@@ -37,7 +39,8 @@ export class AlbumService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.post(VITE_BASE_URL + 'albums', album, config)
             return response.data
@@ -50,7 +53,8 @@ export class AlbumService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.patch(VITE_BASE_URL + 'albums/' + id, album, config)
             return response.data
@@ -63,7 +67,8 @@ export class AlbumService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.delete(VITE_BASE_URL + 'albums/' + id, config)
             return response.data

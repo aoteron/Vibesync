@@ -9,7 +9,8 @@ export class PlaylistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + '/playlists', config)
             return response.data
@@ -22,7 +23,8 @@ export class PlaylistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + 'user/' + userId + '/playlists/' + playlistId, config)
             return response.data
@@ -35,7 +37,8 @@ export class PlaylistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.patch(VITE_BASE_URL + 'user/' + userId + '/playlists/' + playlistId, playlist, config)
             return response.data
@@ -48,7 +51,8 @@ export class PlaylistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.delete(VITE_BASE_URL + 'user/' + userId + '/playlists/' + playlistId, config)
             return response.data
@@ -61,7 +65,8 @@ export class PlaylistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.post(VITE_BASE_URL + 'user/' + userId + '/playlists' + playlistId + '/addtrack', { trackId }, config)
             return response.data
@@ -74,7 +79,8 @@ export class PlaylistService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.delete(VITE_BASE_URL + 'user/' + userId + '/playlists' + playlistId + '/removetrack', config)
             return response.data

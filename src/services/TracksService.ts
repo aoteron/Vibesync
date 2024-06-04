@@ -10,7 +10,8 @@ export class TracksService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + 'tracks', config)
             return response.data
@@ -23,7 +24,8 @@ export class TracksService {
             const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                WithCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + 'tracks/' + id, config)
             return response.data
