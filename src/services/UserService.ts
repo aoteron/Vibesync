@@ -10,13 +10,13 @@ export class UserService {
                     Authorization: `Bearer ${token}`
                 }
             }
-            const response = await axios.get(VITE_BASE_URL, config)
+            const response = await axios.get(VITE_BASE_URL + 'users', config)
             return response.data
         } catch (error) {
             console.log(error)
         }
     }
-    static async getUser(id: string) {
+    static async getUser(id: string) { 
         try {
             const config = {
                 headers: {
@@ -60,7 +60,13 @@ export class UserService {
 
     static async postUser(user: any) {
         try {
-            const response = await axios.post(VITE_BASE_URL + 'users', user)
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                withCredentials: true
+            }
+            const response = await axios.post(VITE_BASE_URL + 'users', user, config)
             return response.data
         } catch (error) {
             console.log(error)
