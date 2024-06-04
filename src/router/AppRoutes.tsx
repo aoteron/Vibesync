@@ -48,11 +48,12 @@ const validateSession = async () => {
     }, 1500)
     return false
   }
-  return response
+  console.log('Yeeha! ' + response)
+  return response ?? true ;
 
 }
 
-/*let countTracks = 0
+let countTracks = 0
 const getAllTracks = async () => {
   const tracks = await TracksService.getTracks()
   if (!tracks && countTracks < 1) {
@@ -99,7 +100,7 @@ const getAllArtists = async () => {
   }
   if (!artists) return null
   return artists
-}*/
+}
 
 export const AppRoutes = () => {
   const { audioRef, audioUrl } = useAudioContext()
@@ -108,10 +109,10 @@ export const AppRoutes = () => {
   const handleTimer = () => {
     setTimeout(() => {
       queryUserLogged.refetch()
-      /*queryAllTracks.refetch()
+      queryAllTracks.refetch()
       queryAllPlaylists.refetch()
       queryAllAlbums.refetch()
-      queryAllArtists.refetch()*/
+      queryAllArtists.refetch()
       setTimer(timer + 1)
     }, 1000)
   }
@@ -131,7 +132,7 @@ export const AppRoutes = () => {
     queryFn: async () => await validateSession()
   })
 
- /* const queryAllTracks = useQuery({
+ const queryAllTracks = useQuery({
     queryKey: ['tracks'],
     queryFn: async () => await getAllTracks()
   })
@@ -150,7 +151,8 @@ export const AppRoutes = () => {
   const queryAllArtists = useQuery({
     queryKey: ['artists'],
     queryFn: async () => await getAllArtists()
-  })*/
+  })
+
   return (
     <SkeletonTheme baseColor='#1C1C26' highlightColor='#222230'>
       <BrowserRouter>

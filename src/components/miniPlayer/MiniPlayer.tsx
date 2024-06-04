@@ -19,6 +19,22 @@ export const MiniPlayer = () => {
     handlePreviousTrack
   } = useAudioContext()
 
+  console.log('MiniPlayer context values:', {
+    audioRef,
+    isPlaying,
+    isMuted,
+    currentTime,
+    songDuration,
+    progressWidth,
+    togglePlay,
+    toggleMute,
+    formatTime,
+    handleProgressClick,
+    audioUrl,
+    handleNextTrack,
+    handlePreviousTrack
+  });
+
   const localTrackString = localStorage.getItem('localTrack')
   const track = localTrackString !== null ? JSON.parse(localTrackString) : null
 
@@ -30,7 +46,7 @@ export const MiniPlayer = () => {
           <div className="progress-indicator" style={{ left: progressWidth }}></div>
         i</div>
         <div className="duration-container">
-          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime !== undefined && formatTime(currentTime)}</span>
           <span>{songDuration}</span>
         </div>
           <PlayButtons

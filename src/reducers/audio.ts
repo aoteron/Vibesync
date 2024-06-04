@@ -15,7 +15,18 @@ export function useAudioReducer() {
   const [count, setCount] = useState(-1)
 
   useEffect(() => {
-    localStorage.setItem('audioPlayerState', JSON.stringify({
+    console.log('State updated:', {
+      isPlaying,
+      isMuted,
+      currentTime,
+      songDuration,
+      progressWidth,
+      audioUrl,
+      audioImg,
+      trackId,
+      count
+    });
+      localStorage.setItem('audioPlayerState', JSON.stringify({
       isPlaying,
       isMuted,
       currentTime,
@@ -29,6 +40,7 @@ export function useAudioReducer() {
   }, [isPlaying, isMuted, currentTime, songDuration, progressWidth, audioUrl, audioImg, trackId, count])
 
   useEffect(() => {
+    console.log('Audio source changed:', audioRef.current?.src);
     getSongDuration(audioRef, setSongDuration)
   }, [audioRef?.current?.src])
 
@@ -38,6 +50,7 @@ export function useAudioReducer() {
   }, 100)
 
   const togglePlay = () => {
+    console.log('togglePlay called');
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause()
@@ -49,6 +62,7 @@ export function useAudioReducer() {
   }
 
   const toggleMute = () => {
+    console.log('toggleMute called');
     if (audioRef.current) {
       audioRef.current.muted = !isMuted
       setIsMuted(!isMuted)
@@ -73,6 +87,7 @@ export function useAudioReducer() {
   }
 
   const storePreviousTrack = (id: number) => {
+    console.log('Storing previous track:', id);
     const tracksList = []
     const storageTracks = localStorage.getItem('previousTrack')
     if (id === 0) return
@@ -86,6 +101,7 @@ export function useAudioReducer() {
   }
 
   const handleTrackEnded = () => {
+    console.log('Track ended');
     if (audioRef.current?.ended) {
       storePreviousTrack(trackId)
       const storageTracks = localStorage.getItem('allTracks')
@@ -103,7 +119,7 @@ export function useAudioReducer() {
         setTimeout(() => {
           getSongDuration(audioRef, setSongDuration)
         }, 170)
-        setIsPlaying(false)
+        setIsPlaying !== undefined && setIsPlaying(false)
       } else if (randomNumber === trackId - 1) {
         randomNumber = trackId - 2
         const track = tracks[randomNumber]
@@ -131,6 +147,7 @@ export function useAudioReducer() {
   }
 
   const handleNextTrack = () => {
+    console.log('Next track');
     const storageTracks = localStorage.getItem('allTracks')
     const tracks = JSON.parse(storageTracks || '{}')
     const tracksLength = tracks.length
@@ -152,6 +169,7 @@ export function useAudioReducer() {
   }
 
   const handlePreviousTrack = () => {
+    console.log('Previous track');
     const storageTracks = localStorage.getItem('allTracks')
     const tracks = JSON.parse(storageTracks || '{}')
     const previousStorageTrack = localStorage.getItem('previousTrack')
@@ -171,12 +189,14 @@ export function useAudioReducer() {
   }
 
   const formatTime = (timeInSeconds: number): string => {
+    console.log('formatTime called with:', timeInSeconds);
     const minutes = Math.floor(timeInSeconds / 60)
     const seconds = Math.floor(timeInSeconds % 60).toString().padStart(2, '0')
     return `${minutes}:${seconds}`
   }
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    console.log('Progress bar clicked');
     if (audioRef.current) {
       const progressBar = e.currentTarget
       const clickPosition = e.clientX - progressBar.getBoundingClientRect().left

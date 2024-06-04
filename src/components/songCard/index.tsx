@@ -39,13 +39,13 @@ const SongCard = ({ track }: Props) => {
 
   useEffect(() => {
     const track = JSON.parse(localStorage.getItem('localTrack') || '{}')
-    setTrackId(track.id)
+    setTrackId !== undefined && setTrackId(track.id)
   }, [])
 
   return (
     <div className="songcard-container" onClick={() => {
-      setTrackId(track.id)
-      setIsPlaying(false)
+      setTrackId !== undefined && setTrackId(track.id)
+      setIsPlaying !== undefined && setIsPlaying(false)
       setTimeout(() => {
         void queryTrack.refetch()
       }, 90)

@@ -29,6 +29,28 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     handlePreviousTrack
   } = useAudioReducer()
 
+  console.log('AudioProvider state:', {
+    audioRef,
+    isPlaying,
+    isMuted,
+    currentTime,
+    songDuration,
+    progressWidth,
+    togglePlay,
+    toggleMute,
+    formatTime,
+    handleProgressClick,
+    audioUrl,
+    audioImg,
+    trackId,
+    setIsPlaying,
+    getSongDuration,
+    setCurrentTime,
+    setSongDuration,
+    handleNextTrack,
+    handlePreviousTrack
+  });
+
   return (
         <AudioContext.Provider
         value={
