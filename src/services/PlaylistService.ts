@@ -12,7 +12,7 @@ export class PlaylistService {
                 },
                 WithCredentials: true
             }
-            const response = await axios.get(VITE_BASE_URL + '/playlists', config)
+            const response = await axios.get(VITE_BASE_URL + 'playlists', config)
             return response.data
         } catch (error) {
             console.log(error)
