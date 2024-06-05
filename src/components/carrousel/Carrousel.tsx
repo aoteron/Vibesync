@@ -15,25 +15,26 @@ interface Props {
 }
 
 const Carrousel = ({ dataTrack, dataArtist, dataAlbum, isActive, dataPlaylist }: Props) => {
+  console.log ('====>Car', dataTrack)
   return (
     <>
       {dataTrack && (
         <div className="products_scroll">
-          {dataTrack.map(track => (
+          {dataTrack?.map(track => (
               <SongCard key={track.id} track={track} isActive={isActive} />
           ))}
         </div>
       )}
       {dataArtist && (
         <div className="products_scroll">
-          {dataArtist.map(artist => (
+          {dataArtist?.map(artist => (
             <ArtistCard key={artist.id} artist={artist} />
           ))}
         </div>
       )}
       {dataAlbum && (
         <div className="products_scroll">
-          {dataAlbum.map(album => (
+          {dataAlbum?.map(album => (
             <Link to="/library/tracks" state={{ accessedFrom: `album ${album.id}` }}>
             <AlbumCard key={album.id} album={album} />
             </Link>
@@ -42,7 +43,7 @@ const Carrousel = ({ dataTrack, dataArtist, dataAlbum, isActive, dataPlaylist }:
       )}
       {dataPlaylist && (
         <div className="products_scroll">
-          {dataPlaylist.map(playlist => (
+          {dataPlaylist?.map(playlist => (
             <PlaylistCard key={playlist.id} playlist={playlist} />
           ))}
         </div>

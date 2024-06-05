@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { TracksService } from '../../services/TracksService'
 
+
 interface Props {
   track: Track
   isActive?: boolean
@@ -12,26 +13,32 @@ interface Props {
 
 const SongCard = ({ track }: Props) => {
   const { setAudioUrl, setAudioImg, trackId, setTrackId, setIsPlaying, getSongDuration, audioRef, setSongDuration } = useAudioContext()
+console.log('--songcard', track)
+
+useEffect(() => {
+  console.log('track id actualizado')
+}, [trackId] ) 
 
   const getTrack = async (trackId: string | undefined) => {
     if (trackId) {
-      const track = await TracksService.getTrack(trackId)
+      const song = await TracksService.getTrack(trackId)
       getSongDuration(audioRef, setSongDuration)
-      setAudioUrl(track.url)
-      setAudioImg(track.thumbnail)
+      setAudioUrl(song.url)
+      setAudioImg(song.thumbnail)
       localStorage.setItem('localTrack', JSON.stringify(track))
       setTimeout(() => {
         setTrackId(0)
         void queryTrack.refetch()
       }, 90)
-      return track
+      return song
     } else {
-      const track = JSON.parse(localStorage.getItem('localTrack') || '{}')
-      setAudioUrl(track.url)
-      setAudioImg(track.thumbnail)
-      return track
+      const song = JSON.parse(localStorage.getItem('localTrack') || '{}')
+      setAudioUrl(song.url)
+      setAudioImg(song.thumbnail)
+      return song
     }
   }
+  console.log('wth is dis?---',trackId)
   const queryTrack = useQuery({
     queryKey: ['track'],
     queryFn: async () => await getTrack(trackId)
@@ -39,13 +46,13 @@ const SongCard = ({ track }: Props) => {
 
   useEffect(() => {
     const track = JSON.parse(localStorage.getItem('localTrack') || '{}')
-    setTrackId(track.id)
+    setTrackId !== undefined && setTrackId(track.id)
   }, [])
 
   return (
     <div className="songcard-container" onClick={() => {
-      setTrackId(track.id)
-      setIsPlaying(false)
+      setTrackId !== undefined && setTrackId(track.id)
+      setIsPlaying !== undefined && setIsPlaying(false)
       setTimeout(() => {
         void queryTrack.refetch()
       }, 90)

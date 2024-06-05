@@ -22,6 +22,7 @@ export const Home = ({ user }: { user: User }) => {
   const playlistArray: Playlist[] | undefined = queryClient.getQueryData(['playlists'])
   const albumArray: Album[] | undefined = queryClient.getQueryData(['albums'])
 
+  console.log('====>', trackArray)
   return (
     <>
       <main className="home-main-container">

@@ -64,7 +64,7 @@ export class UserService {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
-                withCredentials: true
+               // withCredentials: true
             }
             const response = await axios.post(VITE_BASE_URL + 'users', user, config)
             return response.data

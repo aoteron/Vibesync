@@ -28,7 +28,7 @@ export const PlayButtons = ({ togglePlay, isPlaying, toggleMute, isMuted, track,
     if (!likedTracks || likedTracks.length === 0) {
       return false;
     }
-    if (likedTracks.find((item: Track) => item.id === track.id)) {
+    if (likedTracks.find((item: Track) => item.id === track.id && item.id !== null)) {
       return true;
     }
     return false;

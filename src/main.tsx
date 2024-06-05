@@ -9,14 +9,14 @@ import { LikedTracksProvider } from './context/LikedSongs'
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <AudioProvider>
     <LikedTracksProvider>
-    
         <QueryClientProvider client={new QueryClient()}>
            <SearchProvider>
               <AppRoutes/>
             </SearchProvider>
        </QueryClientProvider>
-     
     </LikedTracksProvider>
+  </AudioProvider>
   </React.StrictMode>
 )

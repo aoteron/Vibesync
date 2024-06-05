@@ -48,7 +48,8 @@ const validateSession = async () => {
     }, 1500)
     return false
   }
-  return response
+  console.log('Yeeha! ' + response)
+  return response ?? true ;
 
 }
 
@@ -131,10 +132,11 @@ export const AppRoutes = () => {
     queryFn: async () => await validateSession()
   })
 
-  const queryAllTracks = useQuery({
+ const queryAllTracks = useQuery({
     queryKey: ['tracks'],
     queryFn: async () => await getAllTracks()
   })
+  console.log(queryAllTracks.data)
   localStorage.setItem('allTracks', JSON.stringify(queryAllTracks.data))
 
   const queryAllPlaylists = useQuery({
@@ -151,6 +153,7 @@ export const AppRoutes = () => {
     queryKey: ['artists'],
     queryFn: async () => await getAllArtists()
   })
+
   return (
     <SkeletonTheme baseColor='#1C1C26' highlightColor='#222230'>
       <BrowserRouter>

@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios"
 import { token } from "./TokenService"
 
+
 const { VITE_BASE_URL } = import.meta.env
 
 export class TracksService {
@@ -9,9 +10,9 @@ export class TracksService {
         try {
             const config = {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
                 },
-                WithCredentials: true
+                withCredentials: true
             }
             const response = await axios.get(VITE_BASE_URL + 'tracks', config)
             return response.data
@@ -21,13 +22,13 @@ export class TracksService {
     }
     static async getTrack(id: string) {
         try {
-            const config = {
+           const config = {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
                 WithCredentials: true
             }
-            const response = await axios.get(VITE_BASE_URL + 'tracks/' + id, config)
+        const response = await axios.get(VITE_BASE_URL + 'tracks/' + id, config)
             return response.data
         } catch (error) {
             console.log(error)
