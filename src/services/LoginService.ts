@@ -33,12 +33,12 @@ export default class LoginService {
             return response.data
         } catch (error: AxiosError | any) {
             if (error.request.status === 401 && count < 1) {
-                toast.error('Session expired, please login again')
+                /*toast.error('Session expired, please login again')
                 UserService.logoutUser()
                 count++
                 setTimeout(() => {
                     window.location.reload()
-                }, 3000)
+                }, 3000)*/
             }
         }
     }
