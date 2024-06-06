@@ -60,7 +60,14 @@ export class UserService {
 
     static async postUser(user: any) {
         try {
-            const response = await axios.post(VITE_BASE_URL + 'users', user)
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+
+                },
+                withCredentials: true
+            }
+            const response = await axios.post(VITE_BASE_URL + 'users', user, config)
             return response.data
         } catch (error) {
             console.log(error)

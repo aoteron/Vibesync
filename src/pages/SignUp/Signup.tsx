@@ -11,6 +11,7 @@ export const Signup: any = () => {
   const navigate = useNavigate()
   const handleSignup = async (event: React.FormEvent) => {
     event.preventDefault()
+    console.log("dentro de handleSignup")
 
     const user = {
       email: username,
@@ -38,8 +39,6 @@ export const Signup: any = () => {
         :
         await UserService.postUser(user)
 
-    console.log('response', response)
-    console.log('response', response.user, response.token)
     if (response) {
       await window.localStorage.setItem('userLogged', JSON.stringify(response.user))
       await window.localStorage.setItem('token', JSON.stringify(response.token))
@@ -193,7 +192,7 @@ export const Signup: any = () => {
       <img className="logo" src={logo} />
       <h2 className="signup--header">Signup to start listening to content</h2>
       <Toaster />
-      <form onSubmit={handleSignup} className="signup-form">
+      <form data-testid="signup-form" onSubmit={handleSignup} className="signup-form">
         <input
           className="signup-input"
           type="text"
@@ -242,9 +241,9 @@ export const Signup: any = () => {
           <option value="other">Other</option>
         </select>
         <label htmlFor="country">Country</label>
-        <input type="text" onChange={handleCountryInputChange} />
+        <input id="country" type="text" onChange={handleCountryInputChange} />
         <label htmlFor="birthdate">Birthdate</label>
-        <input type="date" onChange={handleBirthdateInputChange} />
+        <input id="birthdate" type="date" onChange={handleBirthdateInputChange} />
         <label htmlFor="artist">Artist</label>
         <input type="checkbox" onChange={handleArtistChange} />
         {artist && (

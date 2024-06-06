@@ -13,7 +13,7 @@ interface SearchContextProps {
   handleSearch: (input: string) => void
 }
 
-const SearchContext = createContext<SearchContextProps | undefined>(undefined)
+export const SearchContext = createContext<SearchContextProps | undefined>(undefined)
 
 export const useSearchContext = () => {
   const context = useContext(SearchContext)

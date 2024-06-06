@@ -31,7 +31,7 @@ export const MiniPlayer = () => {
         i</div>
         <div className="duration-container">
           <span>{formatTime(currentTime)}</span>
-          <span>{songDuration}</span>
+          <span data-testid="song-duration">{songDuration}</span>
         </div>
           <PlayButtons
             toggleMute={toggleMute}
